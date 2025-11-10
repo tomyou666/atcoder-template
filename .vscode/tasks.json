@@ -1,0 +1,95 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "shell",
+			"label": "buildForAllTest",
+			"command": "g++",
+			"args": [
+				"-std=gnu++23",
+				"-g",
+				"${file}",
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"presentation": {
+				"reveal": "never"
+			},
+			"group": "build",
+			"detail": "コンパイラ:g++"
+		},
+		{
+			"type": "cppbuild",
+			"label": "buildC++",
+			"command": "g++",
+			"args": [
+				"-std=gnu++23",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}/${fileBasenameNoExtension}",
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"presentation": {
+				"reveal": "never"
+			},
+			"group": "build",
+			"detail": "コンパイラ:g++"
+		},
+		{
+			"label": "C++:AllTest",
+			"type": "shell",
+			"command": "cd",
+			"args": [
+				"${fileDirname}",
+				";",
+				"oj",
+				"t",
+				"-d",
+				"${fileDirname}/tests/",
+				"||",
+				"true",
+				";",
+				"rm",
+				"-r",
+				"${fileDirname}/${fileBasenameNoExtension}.out"
+			],
+			"dependsOn": [
+				"buildForAllTest"
+			]
+		},
+		{
+			"label": "removeExe",
+			"type": "shell",
+			"command": "rm",
+			"presentation": {
+				"reveal": "never"
+			},
+			"args": [
+				"-r",
+				"${fileDirname}/${fileBasenameNoExtension}"
+			],
+		},
+		{
+			"label": "Python:AllTest",
+			"type": "shell",
+			"command": "oj",
+			"args": [
+				"t",
+				"-c",
+				"\" python ${file}\"",
+				"-d",
+				"${fileDirname}/tests/",
+			],
+		}
+	]
+}
