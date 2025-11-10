@@ -23,7 +23,7 @@
 			"detail": "コンパイラ:g++"
 		},
 		{
-			"type": "cppbuild",
+			"type": "shell",
 			"label": "buildC++",
 			"command": "g++",
 			"args": [

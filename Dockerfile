@@ -1,5 +1,5 @@
 # Ubuntuの公式コンテナを軸に環境構築
-FROM ubuntu:23.10
+FROM ubuntu:25.10
 
 # インタラクティブモードにならないようにする
 ARG DEBIAN_FRONTEND=noninteractive
@@ -19,8 +19,8 @@ RUN apt-get install -y gcc-13
 RUN apt-get install -y g++-13
 RUN apt-get install -y clang
 RUN apt-get install -y gdb
-# 3.11.4がインストールされる
-RUN apt-get install -y python3.11
+# Python3がインストールされる
+RUN apt-get install -y python3.13
 RUN apt-get install -y python3-pip
 RUN apt-get install -y pypy3
 RUN apt-get install -y nodejs
@@ -28,15 +28,15 @@ RUN apt-get install -y npm
 
 # 一般的なコマンドで使えるように設定
 # e.g. python3.8 main.py => python main.py
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 30 && \
-    update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 30 && \
-    update-alternatives --install /usr/bin/python python /usr/bin/python3.11 30 && \
-    update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 30 && \
-    update-alternatives --install /usr/bin/pypy pypy /usr/bin/pypy3 30
+RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-13 30
+RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 30
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.13 30
+RUN update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 30
+RUN update-alternatives --install /usr/bin/pypy pypy /usr/bin/pypy3 30
 
 # AtCoderでも使えるPythonライブラリをインストール
-RUN pip install -U pip --break-system-packages && \
-    pip install numpy scipy scikit-learn \
+# RUN pip install -U pip --break-system-packages
+RUN pip install numpy scipy scikit-learn \
     numba networkx black isort flake8 mypy --break-system-packages
 
 # C++でAtCoder Library(ACL)を使えるようにする
@@ -44,8 +44,8 @@ RUN git clone https://github.com/atcoder/ac-library.git /lib/ac-library
 ENV CPLUS_INCLUDE_PATH /lib/ac-library
 
 # Pythonでの競技プログラミング用データ構造をインストール
-RUN pip install git+https://github.com/hinamimi/ac-library-python --break-system-packages && \
-    pip install git+https://github.com/hinamimi/python-sortedcontainers --break-system-packages
+RUN pip install git+https://github.com/hinamimi/ac-library-python --break-system-packages
+RUN pip install git+https://github.com/hinamimi/python-sortedcontainers --break-system-packages
 
 # コンテスト補助アプリケーションをインストール
 RUN pip install online-judge-tools --break-system-packages

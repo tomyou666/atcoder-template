@@ -33,23 +33,37 @@ const ld eps = 1e-10;
 #define per(i, n) for (int i = n - 1; i >= 0; i--)
 #define pern(i, num, n) for (int i = n - 1; i >= num; i--)
 #define all(v) v.begin(), v.end()
+void fast_io() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(NULL);
+}
+template<typename T>
+void print(const T& x) {
+    std::cout << x << '\n';
+}
+
+template<typename T, typename... Args>
+void print(const T& x, const Args&... rest) { // 複数の要素を受け取る関数 (再帰の本体)
+    std::cout << x << ' ';
+    print(rest...);
+}
 template <typename T>
-void chmin(T &a, T b)
+void chmin(T &a, T b) // aをbとの最小値で更新
 {
   a = min(a, b);
 }
 template <typename T>
-void chmax(T &a, T b)
+void chmax(T &a, T b) // aをbとの最大値で更新
 {
   a = max(a, b);
 }
 template <typename T>
-void cinarray(vector<T> &v)
+void cinarr(vector<T> &v) // 配列を入力
 {
   rep(i, v.size()) cin >> v[i];
 }
 template <typename T>
-void coutarray(vector<T> &v, bool isReverse = false)
+void printarr(vector<T> &v, bool isReverse = false) // 配列を出力（isReverse=trueで逆順）
 {
   if (!isReverse)
   {
@@ -72,7 +86,7 @@ void coutarray(vector<T> &v, bool isReverse = false)
   cout << endl;
 }
 template <typename T>
-void addv(vector<T> &v, int loc, T val)
+void addv(vector<T> &v, int loc, T val) // ベクトルのloc番目にvalを加算（必要に応じてリサイズ）
 {
   if (loc >= v.size())
     v.resize(loc + 1, 0);
@@ -81,11 +95,12 @@ void addv(vector<T> &v, int loc, T val)
 
 int main()
 {
-  ios::sync_with_stdio(false);
-  cin.tie(nullptr);
+  fast_io();
   int N;
   cin >> N;
   vi A(N);
-  cinarray(A);
-  coutarray(A);
+  cinarr(A);
+  printarr(A);
+  print("hello");
+  print("hello", "world");
 }

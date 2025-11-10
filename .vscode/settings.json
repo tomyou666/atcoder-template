@@ -119,5 +119,13 @@
         "stacktrace": "cpp"
     },
     "C_Cpp.errorSquiggles": "disabled",
-    "cmake.configureOnOpen": true
+    "cmake.configureOnOpen": true,
+    "C_Cpp.inlayHints.autoDeclarationTypes.enabled": false,
+    "C_Cpp.inlayHints.parameterNames.hideLeadingUnderscores": true,
+    "C_Cpp.inlayHints.parameterNames.suppressWhenArgumentContainsName": false,
+    "C_Cpp.inlayHints.parameterNames.enabled": false,
+    "C_Cpp.inlayHints.referenceOperator.showSpace": false,
+    "C_Cpp.inlayHints.referenceOperator.enabled": false,
+    "javascript.inlayHints.functionLikeReturnTypes.enabled": false,
+    "editor.inlayHints.enabled": "off"
 }
