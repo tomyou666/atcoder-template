@@ -1,0 +1,20 @@
+CompileFlags:
+  Add:
+    - -std=c++23
+    - -Wall
+    - -Wextra
+    - -Wpedantic
+    - -Wunused-variable
+    - -Wunused-parameter
+    - -Wunused-function
+    - -Wsign-compare
+    # - -Wconversion
+    - -Wshadow
+    - -I/lib/ac-library
+
+Diagnostics:
+  UnusedIncludes: Relaxed
+  MissingIncludes: Relaxed
+  Suppress:
+    - missing-includes
+

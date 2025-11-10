@@ -23,20 +23,6 @@
         "editor.tabSize": 4,
         "editor.insertSpaces": true
     },
-    "python.linting.flake8Enabled": true,
-    "python.analysis.typeCheckingMode": "basic",
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": [
-        "--line-length",
-        "119"
-    ],
-    "python.linting.flake8Args": [
-        "--ignore",
-        "E203,W503",
-        "--max-line-length",
-        "119"
-    ],
-    "python.linting.enabled": true,
     "files.associations": {
         "*.ts": "typescript",
         "ostream": "cpp",
@@ -118,14 +104,16 @@
         "span": "cpp",
         "stacktrace": "cpp"
     },
-    "C_Cpp.errorSquiggles": "disabled",
+    "clangd.arguments": [
+        "--compile-commands-dir=${workspaceFolder}",
+        "--background-index",
+        "--clang-tidy",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--header-insertion-decorators",
+        "--fallback-style=llvm"
+    ],
+    "clangd.path": "clangd",
     "cmake.configureOnOpen": true,
-    "C_Cpp.inlayHints.autoDeclarationTypes.enabled": false,
-    "C_Cpp.inlayHints.parameterNames.hideLeadingUnderscores": true,
-    "C_Cpp.inlayHints.parameterNames.suppressWhenArgumentContainsName": false,
-    "C_Cpp.inlayHints.parameterNames.enabled": false,
-    "C_Cpp.inlayHints.referenceOperator.showSpace": false,
-    "C_Cpp.inlayHints.referenceOperator.enabled": false,
-    "javascript.inlayHints.functionLikeReturnTypes.enabled": false,
     "editor.inlayHints.enabled": "off"
 }

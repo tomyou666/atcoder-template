@@ -25,7 +25,6 @@ using vvc = vector<vc>;
 // ll mod = 1;
 constexpr ll mod = 998244353;
 const ll INF = mod * mod;
-
 const ld eps = 1e-10;
 
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
@@ -34,18 +33,16 @@ const ld eps = 1e-10;
 #define pern(i, num, n) for (int i = n - 1; i >= num; i--)
 #define all(v) v.begin(), v.end()
 void fast_io() {
-    std::ios::sync_with_stdio(false);
-    std::cin.tie(NULL);
+  std::ios::sync_with_stdio(false);
+  std::cin.tie(NULL);
 }
-template<typename T>
-void print(const T& x) {
-    std::cout << x << '\n';
-}
+template <typename T> void print(const T &x) { std::cout << x << '\n'; }
 
-template<typename T, typename... Args>
-void print(const T& x, const Args&... rest) { // 複数の要素を受け取る関数 (再帰の本体)
-    std::cout << x << ' ';
-    print(rest...);
+template <typename T, typename... Args>
+void print(const T &x,
+           const Args &...rest) { // 複数の要素を受け取る関数 (再帰の本体)
+  std::cout << x << ' ';
+  print(rest...);
 }
 template <typename T>
 void chmin(T &a, T b) // aをbとの最小値で更新
@@ -63,21 +60,17 @@ void cinarr(vector<T> &v) // 配列を入力
   rep(i, v.size()) cin >> v[i];
 }
 template <typename T>
-void printarr(vector<T> &v, bool isReverse = false) // 配列を出力（isReverse=trueで逆順）
+void printarr(vector<T> &v,
+              bool isReverse = false) // 配列を出力（isReverse=trueで逆順）
 {
-  if (!isReverse)
-  {
-    rep(i, v.size())
-    {
+  if (!isReverse) {
+    rep(i, v.size()) {
       if (i > 0)
         cout << " ";
       cout << v[i];
     }
-  }
-  else
-  {
-    per(i, v.size())
-    {
+  } else {
+    per(i, v.size()) {
       if (i < v.size() - 1)
         cout << " ";
       cout << v[i];
@@ -86,15 +79,15 @@ void printarr(vector<T> &v, bool isReverse = false) // 配列を出力（isRever
   cout << endl;
 }
 template <typename T>
-void addv(vector<T> &v, int loc, T val) // ベクトルのloc番目にvalを加算（必要に応じてリサイズ）
+void addv(vector<T> &v, int loc,
+          T val) // ベクトルのloc番目にvalを加算（必要に応じてリサイズ）
 {
   if (loc >= v.size())
     v.resize(loc + 1, 0);
   v[loc] += val;
 }
 
-int main()
-{
+int main() {
   fast_io();
   int N;
   cin >> N;

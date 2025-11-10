@@ -11,35 +11,29 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-vscode.cpptools-extension-pack",
 				"usernamehw.errorlens",
 				"MS-CEINTL.vscode-language-pack-ja",
 				"mechatroner.rainbow-csv",
 				"dunstontc.dark-plus-syntax",
-				"ms-vscode.cpptools",
-				"ms-vscode.cpptools-themes",
 				"ms-vscode.cmake-tools",
 				"mitaki28.vscode-clang",
 				"formulahendry.code-runner",
 				"ms-python.python",
 				"rogalmic.zsh-debug",
-				"vmsynkov.colonize"
+				"vmsynkov.colonize",
+				"KylinIdeTeam.cppdebug",
+				"llvm-vs-code-extensions.vscode-clangd"
 			]
 		}
 	}
-
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "cat /etc/os-release",
-
 	// Configure tool-specific properties.
 	// "customizations": {},
-
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "devcontainer"
 }
