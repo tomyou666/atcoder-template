@@ -1,7 +1,7 @@
 {
-    "editor.formatOnPaste": true,
+    "editor.formatOnPaste": false,
     "editor.formatOnSave": true,
-    "editor.formatOnType": true,
+    "editor.formatOnType": false,
     "clang.executable": "clang++",
     "code-runner.runInTerminal": true,
     "clang.cxxflags": [
@@ -16,6 +16,7 @@
         "*.py.py": "cd $dir && pypy \"$fileName\""
     },
     "[cpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
         "editor.tabSize": 2,
     },
     "[python]": {
@@ -115,5 +116,33 @@
     ],
     "clangd.path": "clangd",
     "cmake.configureOnOpen": true,
-    "editor.inlayHints.enabled": "off"
+    "editor.inlayHints.enabled": "off",
+    "editor.suggest.showClasses": false,
+    "editor.suggest.showConstructors": false,
+    "editor.suggest.showCustomcolors": false,
+    "editor.suggest.showConstants": false,
+    "editor.suggest.showDeprecated": false,
+    "editor.suggest.showEnumMembers": false,
+    "editor.suggest.showEnums": false,
+    "editor.suggest.showEvents": false,
+    "editor.suggest.showFiles": false,
+    "editor.suggest.showFolders": false,
+    "editor.suggest.showKeywords": false,
+    "editor.quickSuggestions": {
+        "other": "off"
+    },
+    "editor.suggest.showColors": false,
+    "editor.suggest.showFields": false,
+    "editor.suggest.showIcons": false,
+    "editor.suggest.showInterfaces": false,
+    "editor.suggest.showMethods": false,
+    "editor.suggest.showModules": false,
+    "editor.suggest.showOperators": false,
+    "editor.suggest.showProperties": false,
+    "editor.suggest.showReferences": false,
+    "editor.suggest.showStructs": false,
+    "editor.suggest.showTypeParameters": false,
+    "editor.suggest.showUnits": false,
+    "editor.suggest.showUsers": false,
+    "editor.suggest.showWords": false
 }

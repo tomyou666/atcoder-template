@@ -7,25 +7,25 @@ using namespace std;
 using ll = long long;
 using ul = unsigned long long;
 using ui = unsigned int;
-using ld = double;
+using dl = double;
 using pi = pair<int, int>;
 using pl = pair<ll, ll>;
-using pd = pair<ld, ld>;
+using pd = pair<dl, dl>;
 using vi = vector<int>;
 using vvi = vector<vi>;
 using vl = vector<ll>;
 using vvl = vector<vl>;
-using vd = vector<ld>;
+using vd = vector<dl>;
 using vvd = vector<vd>;
 using vb = vector<bool>;
 using vvb = vector<vb>;
 using vc = vector<char>;
 using vvc = vector<vc>;
-
+using vp = vector<pi>;
 // ll mod = 1;
 constexpr ll mod = 998244353;
 const ll INF = mod * mod;
-const ld eps = 1e-10;
+const dl eps = 1e-10;
 
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define repn(i, num, n) for (int i = num; i < n; i++)
@@ -36,13 +36,20 @@ void fast_io() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(NULL);
 }
-template <typename T> void print(const T &x) { std::cout << x << '\n'; }
+template <typename T> void print(const T &x) {
+  std::cout << x << '\n';
+}
 
 template <typename T, typename... Args>
-void print(const T &x,
-           const Args &...rest) { // 複数の要素を受け取る関数 (再帰の本体)
+void print(const T &x, const Args &...rest) {
+  // 複数の要素を受け取る関数 (再帰の本体)
   std::cout << x << ' ';
   print(rest...);
+}
+template <typename T>
+void print_dl(const T &x, int precision = 3) // 浮動小数点数を小数点N桁で出力
+{
+  std::cout << std::fixed << std::setprecision(precision) << x << '\n';
 }
 template <typename T>
 void chmin(T &a, T b) // aをbとの最小値で更新
@@ -60,8 +67,8 @@ void cinarr(vector<T> &v) // 配列を入力
   rep(i, v.size()) cin >> v[i];
 }
 template <typename T>
-void printarr(vector<T> &v,
-              bool isReverse = false) // 配列を出力（isReverse=trueで逆順）
+void printarr(vector<T> &v, bool isReverse = false)
+// 配列を出力（isReverse=trueで逆順）
 {
   if (!isReverse) {
     rep(i, v.size()) {
@@ -79,8 +86,8 @@ void printarr(vector<T> &v,
   cout << endl;
 }
 template <typename T>
-void addv(vector<T> &v, int loc,
-          T val) // ベクトルのloc番目にvalを加算（必要に応じてリサイズ）
+void addv(vector<T> &v, int loc, T val)
+// ベクトルのloc番目にvalを加算（必要に応じてリサイズ）
 {
   if (loc >= v.size())
     v.resize(loc + 1, 0);
