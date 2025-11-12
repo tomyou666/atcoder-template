@@ -2,8 +2,7 @@
 using namespace std;
 // #include "atcoder/modint.hpp"
 // using mint = atcoder::modint998244353;
-
-// #define int long long
+#define int long long
 using ll = long long;
 using ul = unsigned long long;
 using ui = unsigned int;
@@ -90,8 +89,10 @@ void addv(vector<T> &v, int loc, T val)
   if (loc >= v.size()) v.resize(loc + 1, 0);
   v[loc] += val;
 }
+#undef int
 
 int main() {
+#define int long long
   fast_io();
   int N;
   cin >> N;

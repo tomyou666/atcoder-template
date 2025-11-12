@@ -10,6 +10,7 @@ CompileFlags:
     # - -Wsign-compare
     # - -Wconversion
     - -Wshadow
+    - -Wno-keyword-macro
     - -I/lib/ac-library
 
 Index:
