@@ -72,14 +72,12 @@ void printarr(vector<T> &v, bool isReverse = false)
 {
   if (!isReverse) {
     rep(i, v.size()) {
-      if (i > 0)
-        cout << " ";
+      if (i > 0) cout << " ";
       cout << v[i];
     }
   } else {
     per(i, v.size()) {
-      if (i < v.size() - 1)
-        cout << " ";
+      if (i < v.size() - 1) cout << " ";
       cout << v[i];
     }
   }
@@ -89,8 +87,7 @@ template <typename T>
 void addv(vector<T> &v, int loc, T val)
 // ベクトルのloc番目にvalを加算（必要に応じてリサイズ）
 {
-  if (loc >= v.size())
-    v.resize(loc + 1, 0);
+  if (loc >= v.size()) v.resize(loc + 1, 0);
   v[loc] += val;
 }
 
