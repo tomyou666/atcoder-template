@@ -2,8 +2,6 @@
 ### 環境
 ```
 c++
-python
-pypy
 ```
 
 ### ライブラリ
@@ -12,23 +10,8 @@ pypy
 ACL
 ```
 
-* python
-```
-numpy==1.18.2
-scipy==1.4.1
-scikit-learn==0.22.2.post1
-numba==0.48.0
-networkx==2.4
-black
-isort
-flake8
-mypy
-ACL
-```
-
 ### 実行方法
-1. `ctrl + n`
-  * pypyで実行する場合は拡張子を`.py.py`にする
+1. `ctrl + alt + n`
 2. デバッグ実行
 
 # コマンド系まとめ
