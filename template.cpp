@@ -31,6 +31,9 @@ const dl eps = 1e-10;
 #define per(i, n) for (int i = n - 1; i >= 0; i--)
 #define pern(i, num, n) for (int i = n - 1; i >= num; i--)
 #define all(v) v.begin(), v.end()
+#define LB(v, val) lower_bound(all(v), val)
+#define UB(v, val) upper_bound(all(v), val)
+#define BS(v, val) binary_search(all(v), val)
 void fast_io() {
   std::ios::sync_with_stdio(false);
   std::cin.tie(NULL);
@@ -40,8 +43,7 @@ template <typename T> void print(const T &x) {
 }
 
 template <typename T, typename... Args>
-void print(const T &x, const Args &...rest) {
-  // 複数の要素を受け取る関数 (再帰の本体)
+void print(const T &x, const Args &...rest) { // 複数の要素を受け取る関数
   std::cout << x << ' ';
   print(rest...);
 }
@@ -66,8 +68,7 @@ void cinarr(vector<T> &v) // 配列を入力
   rep(i, v.size()) cin >> v[i];
 }
 template <typename T>
-void printarr(vector<T> &v, bool isReverse = false)
-// 配列を出力（isReverse=trueで逆順）
+void printarr(vector<T> &v, bool isReverse = false) // 配列を出力
 {
   if (!isReverse) {
     rep(i, v.size()) {
@@ -83,8 +84,7 @@ void printarr(vector<T> &v, bool isReverse = false)
   cout << endl;
 }
 template <typename T>
-void addv(vector<T> &v, int loc, T val)
-// ベクトルのloc番目にvalを加算（必要に応じてリサイズ）
+void addv(vector<T> &v, int loc, T val) // ベクトルのloc番目にvalを加算
 {
   if (loc >= v.size()) v.resize(loc + 1, 0);
   v[loc] += val;
