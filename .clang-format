@@ -1,4 +1,4 @@
 AllowShortBlocksOnASingleLine: Empty
-AllowShortFunctionsOnASingleLine: Empty
+AllowShortFunctionsOnASingleLine: InlineOnly
 AllowShortCaseLabelsOnASingleLine: true
 AllowShortIfStatementsOnASingleLine: AllIfsAndElse

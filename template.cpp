@@ -89,16 +89,16 @@ void addv(vector<T> &v, int loc, T val)
   if (loc >= v.size()) v.resize(loc + 1, 0);
   v[loc] += val;
 }
-#undef int
 
+void solve();
+
+#undef int
 int main() {
 #define int long long
   fast_io();
-  int N;
-  cin >> N;
-  vi A(N);
-  cinarr(A);
-  printarr(A);
-  print("hello");
-  print("hello", "world");
+  solve();
+  return 0;
+}
+
+void solve() {
 }
