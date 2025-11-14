@@ -11,10 +11,6 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"usernamehw.errorlens",
-				"MS-CEINTL.vscode-language-pack-ja",
-				"mechatroner.rainbow-csv",
-				"dunstontc.dark-plus-syntax",
 				"ms-vscode.cmake-tools",
 				"mitaki28.vscode-clang",
 				"formulahendry.code-runner",
