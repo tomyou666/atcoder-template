@@ -1,92 +1,65 @@
 #include <bits/stdc++.h>
 using namespace std;
 // #include "atcoder/modint.hpp"
-// using mint = atcoder::modint998244353;
-#define int long long
-using ll = long long;
-using ul = unsigned long long;
-using ui = unsigned int;
-using dl = double;
-using pi = pair<int, int>;
-using pl = pair<ll, ll>;
-using pd = pair<dl, dl>;
-using vi = vector<int>;
-using vvi = vector<vi>;
-using vl = vector<ll>;
-using vvl = vector<vl>;
-using vd = vector<dl>;
-using vvd = vector<vd>;
-using vb = vector<bool>;
-using vvb = vector<vb>;
-using vc = vector<char>;
-using vvc = vector<vc>;
-using vp = vector<pi>;
-// ll mod = 1;
-constexpr ll mod = 998244353;
-const ll INF = mod * mod;
-const dl eps = 1e-10;
 
+// clang-format off
+// using mint = atcoder::modint998244353;
+typedef long long int ll;
+typedef long double ld;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vl> vvl;
+typedef vector<vvl> vvvl;
+typedef vector<vvvl> vvvvl;
+typedef vector<bool> vb;
+typedef vector<vb> vvb;
+typedef vector<vvb> vvvb;
+typedef vector<vvvb> vvvvb;
+typedef pair<ll,ll> pl;
+typedef pair<ll,pl> ppl;
+typedef pair<ll,ppl> pppl;
+typedef pair<ll,pppl> pppppl;
+constexpr ll mod = 998244353;
+const ll INF = 4000000000000000000ll;
+const ld eps = 1e-10;
+static const long double pi = 3.141592653589793;
+#define il inline
 #define rep(i, n) for (int i = 0; i < (int)(n); i++)
 #define repn(i, num, n) for (int i = num; i < n; i++)
 #define per(i, n) for (int i = n - 1; i >= 0; i--)
 #define pern(i, num, n) for (int i = n - 1; i >= num; i--)
 #define all(v) v.begin(), v.end()
+#define pb push_back
+#define fi first
+#define se second
 #define LB(v, val) lower_bound(all(v), val)
 #define UB(v, val) upper_bound(all(v), val)
 #define BS(v, val) binary_search(all(v), val)
-void fast_io() {
-  std::ios::sync_with_stdio(false);
-  std::cin.tie(NULL);
-}
-template <typename T>
-void cinarr(vector<T> &v) // 配列を入力
-{
-  rep(i, v.size()) cin >> v[i];
-}
-template <typename T> void print(const T &x) {
-  std::cout << x << '\n';
-}
-template <typename T, typename... Args>
-void print(const T &x, const Args &...rest) { // 複数の要素を受け取る関数
-  std::cout << x << ' ';
-  print(rest...);
-}
-template <typename T>
-void print_dl(const T &x, int precision = 3) // 浮動小数点数を小数点N桁で出力
-{
-  std::cout << std::fixed << std::setprecision(precision) << x << '\n';
-}
-template <typename T>
-void printarr(vector<T> &v, bool isReverse = false) // 配列を出力
-{
-  if (!isReverse) {
-    rep(i, v.size()) {
-      if (i > 0) cout << " ";
-      cout << v[i];
-    }
-  } else {
-    per(i, v.size()) {
-      if (i < v.size() - 1) cout << " ";
-      cout << v[i];
-    }
-  }
-  cout << endl;
-}
-template <typename T>
-void addv(vector<T> &v, int loc, T val) // ベクトルのloc番目にvalを加算
-{
-  if (loc >= v.size()) v.resize(loc + 1, 0);
-  v[loc] += val;
-}
+#define MINE(v) min_element(all(v))
+#define MAXE(v) max_element(all(v))
+void yes(bool a){cout<<(a?"yes":"no")<<endl;}
+void YES(bool a){cout<<(a?"YES":"NO")<<endl;}
+void Yes(bool a){cout<<(a?"Yes":"No")<<endl;}
+void possible(bool a){ cout<<(a?"possible":"impossible")<<endl; }
+void Possible(bool a){ cout<<(a?"Possible":"Impossible")<<endl; }
+void POSSIBLE(bool a){ cout<<(a?"POSSIBLE":"IMPOSSIBLE")<<endl; }
+void fast_io() {std::ios::sync_with_stdio(false);std::cin.tie(NULL);}
+template <typename T> void cinarr(vector<T> &v){rep(i, v.size()) cin >> v[i];}
+template <typename T> void print(const T &x){std::cout << x << '\n';}
+template <typename T, typename... Args> void print(const T &x, const Args &...rest){std::cout << x << ' ';print(rest...);}
+template <typename T> void print_ld(const T &x, int precision = 3){std::cout << std::fixed << std::setprecision(precision) << x << '\n';}
+template <typename T> void printarr(vector<T> &v, bool isReverse = false){if (!isReverse) {rep(i, v.size()) {if (i > 0) cout << " ";cout << v[i];}} else {per(i, v.size()) {if (i < v.size() - 1) cout << " ";cout << v[i];}}cout << endl;}
+template <typename T> void addv(vector<T> &v, int loc, T val){if (loc >= v.size()) v.resize(loc + 1, 0);v[loc] += val;}
 
+// clang-format on
+int T = 1;
 void solve();
 
-#undef int
 int main() {
-#define int long long
   fast_io();
-  solve();
-  return 0;
+  while (T--) {
+    solve();
+  }
 }
 
 void solve() {
