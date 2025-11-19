@@ -50,14 +50,21 @@ template <typename T, typename... Args> void print(const T &x, const Args &...re
 template <typename T> void print_ld(const T &x, int precision = 3){std::cout << std::fixed << std::setprecision(precision) << x << '\n';}
 template <typename T> void printarr(vector<T> &v, bool isReverse = false){if (!isReverse) {rep(i, v.size()) {if (i > 0) cout << " ";cout << v[i];}} else {per(i, v.size()) {if (i < v.size() - 1) cout << " ";cout << v[i];}}cout << endl;}
 template <typename T> void addv(vector<T> &v, int loc, T val){if (loc >= v.size()) v.resize(loc + 1, 0);v[loc] += val;}
+template<class T> using _pq = priority_queue<T, vector<T>, greater<T>>;
+template<class T> bool chmin(T &a,T b){if(b<a){a=b;return 1;}else return 0;}
+template<class T> bool chmax(T &a,T b){if(a<b){a=b;return 1;}else return 0;}
+template<class T> void So(vector<T> &v) {sort(v.begin(),v.end());}
+template<class T> void Sore(vector<T> &v) {sort(v.begin(),v.end(),[](T x,T y){return x>y;});}
+int binary_count(long long a){int res=0;while(a){res+=(a&1),a>>=1;}return res;}
 
 // clang-format on
-int T = 1;
+
+int NUM_OF_ANSER = 1;
 void solve();
 
 int main() {
   fast_io();
-  while (T--) {
+  while (NUM_OF_ANSER--) {
     solve();
   }
 }

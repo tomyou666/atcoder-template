@@ -1,10 +1,10 @@
 *.out
-# abcで始まるフォルダを無視
+# フォルダを無視
 abc*/
 
-# 一時的に使用しそうなファイル名を無視
+# ファイル名
 test*
 kaitou*
 temp*
-
+problem.json
 

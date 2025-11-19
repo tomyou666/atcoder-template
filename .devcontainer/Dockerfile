@@ -27,7 +27,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # 一般的なコマンドで使えるように設定
-# e.g. python3.8 main.py => python main.py
+# e.g. g++-13 => g++
 RUN update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-13 30
 
 # C++でAtCoder Library(ACL)を使えるようにする
@@ -36,3 +36,10 @@ ENV CPLUS_INCLUDE_PATH /lib/ac-library
 
 # コンテスト補助アプリケーションをインストール
 RUN npm install -g atcoder-cli
+
+# スクレイピングツール「atcs」をインストール (アーキテクチャごとにURLを変更)
+RUN ARCH=$([ "$(uname -m)" = "aarch64" ] && echo "arm64" || echo "amd64") && \
+    curl -L "https://github.com/tomyou666/atcoder-scraper/releases/latest/download/atcs-linux-${ARCH}" -o atcs && \
+    chmod +x atcs && \
+    mv atcs /usr/local/bin/atcs
+

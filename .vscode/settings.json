@@ -116,7 +116,7 @@
     ],
     "clangd.path": "clangd",
     "cmake.configureOnOpen": true,
-    "editor.inlayHints.enabled": "off",
+    // "editor.inlayHints.enabled": "off",
     "editor.suggest.showClasses": false,
     "editor.suggest.showConstructors": false,
     "editor.suggest.showCustomcolors": false,

@@ -4,6 +4,7 @@ CompileFlags:
     - -Wall
     - -Wextra
     - -Wpedantic
+    # - -Weverything  # ほぼすべての警告を有効化
     - -Wunused-variable
     - -Wunused-parameter
     - -Wunused-function
@@ -15,6 +16,9 @@ CompileFlags:
 
 Index:
   Background: Build
+
+InlayHints:
+  Enabled: false
 
 Diagnostics:
   UnusedIncludes: Relaxed
