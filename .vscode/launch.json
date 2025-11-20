@@ -21,72 +21,13 @@
             "type": "cppdbg",
             "request": "launch",
             "cwd": "${fileDirname}",
-            "preLaunchTask": "C++:AllTest",
-            "program": "zsh",
+            "preLaunchTask": "buildForAllTest",
+            "postDebugTask": "removeExeForAllTest",
+            "program": "/bin/zsh",
             "args": [
                 "-c",
-                ";",
-                "rm",
-                "-r",
-                "${fileDirname}/${fileBasenameNoExtension}.out"
+                "\"oj t -d ${fileDirname}/tests/\"",
             ],
-        },
-        {
-            "name": "C++:Test1",
-            "type": "cppdbg",
-            "request": "launch",
-            "cwd": "${fileDirname}",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "MIMode": "gdb",
-            "miDebuggerPath": "/usr/bin/gdb",
-            "preLaunchTask": "buildC++",
-            "postDebugTask": "removeExe",
-            "args": [
-                "<",
-                "tests/sample-1.in",
-                ";",
-                "rm",
-                "-r",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ]
-        },
-        {
-            "name": "C++:Test2",
-            "type": "cppdbg",
-            "request": "launch",
-            "cwd": "${fileDirname}",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "MIMode": "gdb",
-            "miDebuggerPath": "/usr/bin/gdb",
-            "preLaunchTask": "buildC++",
-            "postDebugTask": "removeExe",
-            "args": [
-                "<",
-                "tests/sample-2.in",
-                ";",
-                "rm",
-                "-r",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ]
-        },
-        {
-            "name": "C++:Test3",
-            "type": "cppdbg",
-            "request": "launch",
-            "cwd": "${fileDirname}",
-            "program": "${fileDirname}/${fileBasenameNoExtension}",
-            "MIMode": "gdb",
-            "miDebuggerPath": "/usr/bin/gdb",
-            "preLaunchTask": "buildC++",
-            "postDebugTask": "removeExe",
-            "args": [
-                "<",
-                "tests/sample-3.in",
-                ";",
-                "rm",
-                "-r",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ]
         },
     ]
 }

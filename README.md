@@ -73,7 +73,7 @@ int main() {
 
 2. `Ctrl+Alt+N`（Mac: `Cmd+Alt+N`）で実行します
 
-3. ターミナルに「Hello World」と表示されれば成功です！
+3. ターミナルに「Hello World」と表示されれば成功です。
 
 ## プロジェクト構成
 
@@ -91,8 +91,7 @@ AtCoder/
 ├── template.cpp           # C++テンプレートファイル
 ├── test.cpp               # テスト用ファイル
 ├── module/                # 共通モジュール
-│   └── algorithm.cpp     # アルゴリズム実装例
-└── README.md              # このファイル
+└── README.md              # このテンプレートの説明
 ```
 
 ## 開発環境の詳細
@@ -115,10 +114,12 @@ AtCoder/
 **AtCoder関連ツール**
 - **AtCoder Library (ACL)**: `/lib/ac-library`にインストール済み
 - **atcoder-cli (acc)**: コンテスト管理ツール。コンテスト用ディレクトリの作成や提出を自動化できます。詳細は[公式インストールガイド](http://tatamo.81.la/blog/2018/12/07/atcoder-cli-installation-guide/)を参照してください。
+- **online-judge-tools (oj)**: テストケースの実行や提出を自動化するツール。`oj t`コマンドでテストケースを一括実行できます。詳細は[公式GitHub](https://github.com/online-judge-tools/oj)を参照してください。
 - **atcs**: AtCoder用のURLを指定して問題文を取得するシンプルなスクレイピングツール。復習目的での問題文をAIに読み込ませる際に便利なツールです。詳細は [AtCoder シンプルなスクレイピングツール「atcs」の紹介](https://qiita.com/tomyou666/items/6acf1f048b81a24da58b) を参照してください。
 
 **その他**
 - `nodejs` / `npm`: JavaScript実行環境（atcoder-cli実行用）
+- `python3.13` / `pip`: Python実行環境（online-judge-tools実行用）
 
 ### シンボリックリンク
 
@@ -127,19 +128,72 @@ AtCoder/
 ## 使用方法
 
 ### 新しい問題の作成
+[atcker-cli](http://tatamo.81.la/blog/2018/12/07/atcoder-cli-installation-guide/) を利用して問題をダウンロードします。
 
-1. 問題用のディレクトリを作成
+1. `acc new <contest-id>`コマンドでコンテスト問題をダウンロード
 ```bash
-mkdir abc123-a
-cd abc123-a
+acc new abc999
 ```
 
-2. テンプレートをコピー
-```bash
-cp ../template.cpp main.cpp
-```
+> ここでログイン情報を求められますがcli経由で提出をしない場合は必要ないので何も入力せずにEnterを押下します。
 
-3. VS Codeで開いて編集
+2. `abc<コンテスト番号>`フォルダが作成されます。a問題を解く場合は、`abc<コンテスト番号>/a`フォルダに`a.cpp`を作成して問題を解いてください。また必要に応じて `template.cpp`からマクロなどをコピーしてください。
+
+
+```
+abc999
+|-- a
+|   `-- tests
+|       |-- sample-1.in
+|       |-- sample-1.out
+|       |-- sample-2.in
+|       |-- sample-2.out
+|       |-- sample-3.in
+|       `-- sample-3.out
+|-- b
+|   `-- tests
+|       |-- sample-1.in
+|       |-- sample-1.out
+|       |-- sample-2.in
+|       |-- sample-2.out
+|       |-- sample-3.in
+|       `-- sample-3.out
+|-- c
+|   `-- tests
+|       |-- sample-1.in
+|       |-- sample-1.out
+|       |-- sample-2.in
+|       |-- sample-2.out
+|       |-- sample-3.in
+|       `-- sample-3.out
+|-- contest.acc.json
+|-- d
+|   `-- tests
+|       |-- sample-1.in
+|       |-- sample-1.out
+|       |-- sample-2.in
+|       `-- sample-2.out
+|-- e
+|   `-- tests
+|       |-- sample-1.in
+|       |-- sample-1.out
+|       |-- sample-2.in
+|       `-- sample-2.out
+|-- f
+|   `-- tests
+|       |-- sample-1.in
+|       |-- sample-1.out
+|       |-- sample-2.in
+|       `-- sample-2.out
+`-- g
+    `-- tests
+        |-- sample-1.in
+        |-- sample-1.out
+        |-- sample-2.in
+        |-- sample-2.out
+        |-- sample-3.in
+        `-- sample-3.out
+```
 
 ### コードの実行
 
@@ -151,18 +205,19 @@ cp ../template.cpp main.cpp
 
 **実行コマンド**: `g++ -O2 -std=c++23 "$fileName" && ./a.out && rm ./a.out`
 
-#### 方法2: ターミナルから実行
-
-```bash
-g++ -O2 -std=c++23 main.cpp -o main
-./main
-```
-
-#### 方法3: デバッグモードで実行（ブレークポイントを利用したい場合）
+#### 方法2: デバッグモードで実行（ブレークポイントを利用したい場合）
 
 F5キーを押すか、デバッグパネルから「C++:Debug」を選択
 
 ブレークポイントで止まってくれます。
+
+#### 方法3: テストケース一括実行（C++:AllTest）
+
+1. `acc new abc999`でコンテストをダウンロードすると、`abc999/a/`ディレクトリに`tests/`ディレクトリが自動的に作成され、テストケースファイルが配置されます。
+2. `abc999/a/`ディレクトリで`a.cpp`を開きます（なければ新規作成）
+3. VS Codeのデバッグパネル（`Ctrl+Shift+D`）から「C++:AllTest」を選択
+4. `F5`キーを押すか、デバッグ開始ボタンをクリック
+5. すべてのテストケースが実行され、結果が表示されます
 
 ### コードのフォーマット
 
@@ -185,6 +240,19 @@ VS Codeのデバッグパネル（`Ctrl+Shift+D`）から以下の設定を選�
   - GDBでデバッグ開始
   - デバッグ終了後、実行ファイルを自動削除
 
+#### 2. C++:AllTest
+- **用途**: テストケースを一括実行して検証
+- **動作**:
+  - ビルドタスク（`buildForAllTest`）を実行
+  - `oj t`コマンドで`tests/`ディレクトリ内のテストケースを実行
+  - デバッグ終了後、実行ファイルを自動削除
+- **使い方**:
+  1. `acc new abc432`でコンテストをダウンロードすると、`abc432/a/`ディレクトリに`tests/`ディレクトリが自動的に作成され、テストケースファイル（`sample-1.in`, `sample-1.out`など）が配置されます
+  2. `abc432/a/`ディレクトリで`a.cpp`を開きます
+  3. VS Codeのデバッグパネル（`Ctrl+Shift+D`）から「C++:AllTest」を選択
+  4. F5キーを押すか、デバッグ開始ボタンをクリック
+  5. すべてのテストケースが実行され、結果が表示されます
+
 ### ブレークポイントの設定
 
 1. 行番号の左側をクリックしてブレークポイントを設定
@@ -202,9 +270,11 @@ Dockerイメージの定義ファイル。以下の処理を行います：
 2. **タイムゾーン設定**: Asia/Tokyo
 3. **基本ツールインストール**: zsh, git, curl等
 4. **C++環境構築**: g++-13, clang, clangd, gdb
-5. **AtCoder Libraryインストール**: `/lib/ac-library`
-6. **atcoder-cliインストール**: npm経由
-7. **atcsインストール**: アーキテクチャに応じて自動選択
+5. **Python環境構築**: python3.13, pip（online-judge-tools実行用）
+6. **AtCoder Libraryインストール**: `/lib/ac-library`
+7. **atcoder-cliインストール**: npm経由
+8. **online-judge-toolsインストール**: pip経由
+9. **atcsインストール**: アーキテクチャに応じて自動選択
 
 ### .devcontainer/devcontainer.json
 
@@ -291,17 +361,36 @@ using mint = atcoder::modint998244353;
 コンテスト管理ツール：
 
 ```bash
-# コンテストの開始
-acc new abc123
+# コンテストの開始（abc432フォルダが作成される）
+acc new abc432
 
-# 問題の提出
-acc submit main.cpp
+# a問題のディレクトリに移動
+cd abc432/a
 
-# テスト実行
+# 問題の提出（a.cppを提出）
+acc submit a.cpp
+
+# テスト実行（abc432/aディレクトリ内で実行）
 acc test
 ```
 
 詳細は[公式インストールガイド](http://tatamo.81.la/blog/2018/12/07/atcoder-cli-installation-guide/)を参照してください。
+
+### online-judge-tools (oj)の使用
+
+テストケース実行ツール：
+
+```bash
+# abc432/aディレクトリに移動
+cd abc432/a
+
+# テストケースを実行（tests/ディレクトリ内のテストケースを一括実行）
+oj t -d tests/
+
+# または、デバッグパネルから「C++:AllTest」を選択してF5キーを押す
+```
+
+詳細は[公式GitHub](https://github.com/online-judge-tools/oj)を参照してください。
 
 ### atcsの使用
 

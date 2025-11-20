@@ -17,7 +17,8 @@
 				"rogalmic.zsh-debug",
 				"vmsynkov.colonize",
 				"KylinIdeTeam.cppdebug",
-				"llvm-vs-code-extensions.vscode-clangd"
+				"llvm-vs-code-extensions.vscode-clangd",
+				"usernamehw.errorlens"
 			]
 		}
 	}

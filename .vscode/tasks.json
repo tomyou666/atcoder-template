@@ -13,9 +13,6 @@
 			"options": {
 				"cwd": "${fileDirname}"
 			},
-			"problemMatcher": [
-				"$gcc"
-			],
 			"presentation": {
 				"reveal": "never"
 			},
@@ -36,9 +33,6 @@
 			"options": {
 				"cwd": "${fileDirname}"
 			},
-			"problemMatcher": [
-				"$gcc"
-			],
 			"presentation": {
 				"reveal": "never"
 			},
@@ -56,16 +50,25 @@
 				"t",
 				"-d",
 				"${fileDirname}/tests/",
-				"||",
-				"true",
-				";",
-				"rm",
-				"-r",
-				"${fileDirname}/${fileBasenameNoExtension}.out"
 			],
 			"dependsOn": [
 				"buildForAllTest"
 			]
+		},
+		{
+			"label": "removeExeForAllTest",
+			"type": "shell",
+			"command": "rm",
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"presentation": {
+				"reveal": "never"
+			},
+			"args": [
+				"-r",
+				"*.out"
+			],
 		},
 		{
 			"label": "removeExe",
@@ -79,17 +82,5 @@
 				"${fileDirname}/${fileBasenameNoExtension}"
 			],
 		},
-		{
-			"label": "Python:AllTest",
-			"type": "shell",
-			"command": "oj",
-			"args": [
-				"t",
-				"-c",
-				"\" python ${file}\"",
-				"-d",
-				"${fileDirname}/tests/",
-			],
-		}
 	]
 }
