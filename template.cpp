@@ -19,6 +19,8 @@ typedef vector<ld> vld;
 typedef vector<vld> vvld;
 typedef vector<vvld> vvvld;
 typedef vector<vvvld> vvvvld;
+typedef vector<char> vc;
+typedef vector<string> vs;
 typedef pair<ll,ll> pl;
 typedef pair<ll,pl> ppl;
 typedef pair<ll,ppl> pppl;
