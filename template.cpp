@@ -1,9 +1,11 @@
 #include <bits/stdc++.h>
+// #include <atcoder/all>
 using namespace std;
-// #include "atcoder/modint.hpp"
+// using namespace atcoder;
 
 // clang-format off
-// using mint = atcoder::modint998244353;
+// using mint = modint998244353;
+// using mint = modint1000000007;
 typedef long long int ll;
 typedef long double ld;
 typedef vector<int> vi;
