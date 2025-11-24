@@ -93,3 +93,11 @@ mint kaijo(ll a) { // 階乗を計算
 mint division(mint a, mint b, ll m) { // 余り機能付きの除算
   return a * b.pow(m - 2);
 }
+
+ll lPow(ll a, ll b) { // long long型で累乗
+  ll r = 1;
+  rep(_, b) {
+    r *= a;
+  }
+  return r;
+}
