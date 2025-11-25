@@ -23,6 +23,7 @@ typedef vector<vvld> vvvld;
 typedef vector<vvvld> vvvvld;
 typedef vector<char> vc;
 typedef vector<string> vs;
+typedef vector<pair<ll,ll>> vpl;
 typedef pair<ll,ll> pl;
 typedef pair<ll,pl> ppl;
 typedef pair<ll,ppl> pppl;
