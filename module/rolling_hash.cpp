@@ -50,9 +50,6 @@ static const long double pi = 3.141592653589793;
 #define BS(v, val) binary_search(all(v), val)
 #define MINE(v) min_element(all(v))
 #define MAXE(v) max_element(all(v))
-#define SORT(v) So(v)
-#define SORE(v) Sore(v)
-#define REV(v) reverse(all(v))
 #define INT(...) int __VA_ARGS__; IN(__VA_ARGS__)
 #define LL(...) ll __VA_ARGS__; IN(__VA_ARGS__)
 #define STR(...) string __VA_ARGS__; IN(__VA_ARGS__)
@@ -80,9 +77,7 @@ template<class T> using _pql = priority_queue<T, vector<T>, greater<T>>;
 template<class T> bool chmin(T &a,T b){if(b<a){a=b;return 1;}else return 0;}
 template<class T> bool chmax(T &a,T b){if(a<b){a=b;return 1;}else return 0;}
 template<class T> void So(vector<T> &v) {sort(all(v));}
-void So(string &v) {sort(all(v));}
-template<class T> void Sore(vector<T> &v) {sort(all(v), greater<T>());}
-void Sore(string &v) {sort(all(v),[](auto &a,auto &b){return a>b;});}
+template<class T> void Sore(vector<T> &v) {sort(all(v),[](T x,T y){return x>y;});}
 int binary_count(long long a){int res=0;while(a){res+=(a&1),a>>=1;}return res;}
 int scan() {return getchar();}
 void scan(int &a) {cin >> a;}
@@ -98,15 +93,34 @@ void IN() {}
 template <class Head, class... Tail> void IN(Head &head, Tail &...tail) { scan(head); IN(tail...);}
 // clang-format on
 
-int NUM_OF_ANSER = 1;
-void solve();
+// ローリングハッシュ構造体
+// 使い方:
+//   RollingHash rh(s);
+//   ll hash1 = rh.get(l, r);
+//   ll hash2 = rh.get(l2, r2);
+//   if (hash1 == hash2) { ... }
+struct RollingHash {
+  // 基数（文字の種類数より大きい値。100, 131, 1009などがよく使われる）
+  ll base;
+  ll mod;
+  vector<ll> hash, pow;
+  string s;
 
-int main() {
-  fast_io();
-  while (NUM_OF_ANSER--) {
-    solve();
+  RollingHash(const string &s, ll base = 100, ll mod = 998244353)
+      : base(base), mod(mod), s(s) {
+    int n = s.size();
+    hash.assign(n + 1, 0);
+    pow.assign(n + 1, 1);
+
+    rep(i, n) {
+      hash[i + 1] = (hash[i] * base + s[i]) % mod;
+      pow[i + 1] = (pow[i] * base) % mod;
+    }
   }
-}
 
-void solve() {
-}
+  // ハッシュ値
+  ll get(int l, int r) {
+    ll h = (hash[r + 1] - hash[l] * pow[r - l + 1] % mod + mod) % mod;
+    return h;
+  }
+};
