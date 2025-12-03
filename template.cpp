@@ -1,12 +1,14 @@
+#include <atcoder/all>
 #include <bits/stdc++.h>
-// #include <atcoder/all>
+
 using namespace std;
-// using namespace atcoder;
+using namespace atcoder;
 
 // clang-format off
+typedef long long int ll;
 // using mint = modint998244353;
 // using mint = modint1000000007;
-typedef long long int ll;
+constexpr ll mod = 998244353;
 typedef long double ld;
 typedef vector<int> vi;
 typedef vector<ll> vl;
@@ -28,7 +30,6 @@ typedef pair<ll,ll> pl;
 typedef pair<ll,pl> ppl;
 typedef pair<ll,ppl> pppl;
 typedef pair<ll,pppl> pppppl;
-constexpr ll mod = 998244353;
 const ll INF = 4000000000000000000ll;
 const ld eps = 1e-10;
 static const long double pi = 3.141592653589793;
