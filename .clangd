@@ -15,14 +15,14 @@ CompileFlags:
     - -I/lib/ac-library
 
 Index:
-  Background: Build
+  Background: Skip
 
 InlayHints:
   Enabled: false
 
 Diagnostics:
-  UnusedIncludes: Relaxed
-  MissingIncludes: Relaxed
+  UnusedIncludes: None
+  MissingIncludes: None
   Suppress:
     - missing-includes
     - Wvla-cxx-extension
