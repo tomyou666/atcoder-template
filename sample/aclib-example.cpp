@@ -1,11 +1,12 @@
+#include <atcoder/all>
 #include <bits/stdc++.h>
-// #include <atcoder/all>
+
 using namespace std;
-// using namespace atcoder;
+using namespace atcoder;
 
 // clang-format off
 // using mint = modint998244353;
-// using mint = modint1000000007;
+using mint = modint1000000007;
 typedef long long int ll;
 typedef long double ld;
 typedef vector<int> vi;
@@ -23,7 +24,6 @@ typedef vector<vvld> vvvld;
 typedef vector<vvvld> vvvvld;
 typedef vector<char> vc;
 typedef vector<string> vs;
-typedef vector<pair<ll,ll>> vpl;
 typedef pair<ll,ll> pl;
 typedef pair<ll,pl> ppl;
 typedef pair<ll,ppl> pppl;
@@ -38,11 +38,7 @@ static const long double pi = 3.141592653589793;
 #define per(i, n) for (int i = n - 1; i >= 0; i--)
 #define pern(i, num, n) for (int i = n - 1; i >= num; i--)
 #define all(v) v.begin(), v.end()
-#define rall(c) rbegin(c), rend(c)
 #define pb push_back
-#define eb emplace_back
-#define ppb pop_back
-#define ppf pop_front
 #define fi first
 #define se second
 #define LB(v, val) lower_bound(all(v), val)
@@ -50,15 +46,6 @@ static const long double pi = 3.141592653589793;
 #define BS(v, val) binary_search(all(v), val)
 #define MINE(v) min_element(all(v))
 #define MAXE(v) max_element(all(v))
-#define INT(...) int __VA_ARGS__; IN(__VA_ARGS__)
-#define LL(...) ll __VA_ARGS__; IN(__VA_ARGS__)
-#define STR(...) string __VA_ARGS__; IN(__VA_ARGS__)
-#define CHR(...) char __VA_ARGS__; IN(__VA_ARGS__)
-#define DBL(...) double __VA_ARGS__; IN(__VA_ARGS__)
-#define VEC(type, name, size) vector<type> name(size); IN(name)
-#define VEC2(type, name1, name2, size) vector<type> name1(size), name2(size);  for (int i = 0; i < size; i++) IN(name1[i], name2[i])
-#define VEC3(type, name1, name2, name3, size) vector<type> name1(size), name2(size), name3(size);  for (int i = 0; i < size; i++) IN(name1[i], name2[i], name3[i])
-#define VV(type, name, h, w) vector<vector<type>> name(h, vector<type>(w)); IN(name)
 void yes(bool a){cout<<(a?"yes":"no")<<endl;}
 void YES(bool a){cout<<(a?"YES":"NO")<<endl;}
 void Yes(bool a){cout<<(a?"Yes":"No")<<endl;}
@@ -72,55 +59,37 @@ template <typename T, typename... Args> void print(const T &x, const Args &...re
 template <typename T> void print_ld(const T &x, int precision = 3){std::cout << std::fixed << std::setprecision(precision) << x << '\n';}
 template <typename T> void printarr(vector<T> &v, bool isReverse = false){if (!isReverse) {rep(i, v.size()) {if (i > 0) cout << " ";cout << v[i];}} else {per(i, v.size()) {if (i < v.size() - 1) cout << " ";cout << v[i];}}cout << endl;}
 template <typename T> void addv(vector<T> &v, int loc, T val){if (loc >= v.size()) v.resize(loc + 1, 0);v[loc] += val;}
-template<class T> using _pq = priority_queue<T, vector<T>>;
-template<class T> using _pql = priority_queue<T, vector<T>, greater<T>>;
+template<class T> using _pq = priority_queue<T, vector<T>, greater<T>>;
 template<class T> bool chmin(T &a,T b){if(b<a){a=b;return 1;}else return 0;}
 template<class T> bool chmax(T &a,T b){if(a<b){a=b;return 1;}else return 0;}
-template<class T> void So(vector<T> &v) {sort(all(v));}
-template<class T> void Sore(vector<T> &v) {sort(all(v),[](T x,T y){return x>y;});}
+template<class T> void So(vector<T> &v) {sort(v.begin(),v.end());}
+template<class T> void Sore(vector<T> &v) {sort(v.begin(),v.end(),[](T x,T y){return x>y;});}
 int binary_count(long long a){int res=0;while(a){res+=(a&1),a>>=1;}return res;}
-int scan() {return getchar();}
-void scan(int &a) {cin >> a;}
-void scan(long long &a) {cin >> a;}
-void scan(char &a) {cin >> a;}
-void scan(double &a) {cin >> a;}
-void scan(string &a) {cin >> a;}
-template <class T, class S> void scan(pair<T, S> &p) {scan(p.first), scan(p.second);}
-template <class T> void scan(vector<T> &);
-template <class T> void scan(vector<T> &a) {for (auto &i : a) scan(i);}
-template <class T> void scan(T &a) {cin >> a;}
-void IN() {}
-template <class Head, class... Tail> void IN(Head &head, Tail &...tail) { scan(head); IN(tail...);}
+
 // clang-format on
 
-// ローリングハッシュ構造体
-// 使い方:
-//   RollingHash rh(s);
-//   ll hash1 = rh.get(l, r);
-//   ll hash2 = rh.get(l2, r2);
-//   if (hash1 == hash2) { ... }
-struct RollingHash {
-  // 基数（文字の種類数より大きい値。100, 131, 1009などがよく使われる）
-  ll base;
-  ll mod;
-  vector<ll> hash, pow;
-  string s;
-
-  RollingHash(const string &s, ll base = 100, ll mod = 998244353)
-      : base(base), mod(mod), s(s) {
-    int n = s.size();
-    hash.assign(n + 1, 0);
-    pow.assign(n + 1, 1);
-
-    rep(i, n) {
-      hash[i + 1] = (hash[i] * base + s[i]) % mod;
-      pow[i + 1] = (pow[i] * base) % mod;
-    }
-  }
-
-  // ハッシュ値
-  ll get(int l, int r) {
-    ll h = (hash[r + 1] - hash[l] * pow[r - l + 1] % mod + mod) % mod;
-    return h;
-  }
-};
+// https://atcoder.github.io/ac-library/production/document_ja/segtree.html
+void segtree_sample() {      // segtreeの使い方
+  auto op = [](ll a, ll b) { // 演算
+    return min(a, b);
+  };
+  auto e = []() { // 初期化(単位元)
+    return -INF;
+  };
+  segtree<ll, op, e> seg(10);
+  // seg[0]に3をセット.O(logn)
+  seg.set(0, 3);
+  // seg[0]をゲット.O(1)
+  seg.get(0);
+  // [2,4)⇒p[2],p[3]の範囲でopを満たす要素を返す.O(logn)
+  seg.prod(2, 4);
+  // すべての範囲でopを満たす要素を返す.O(1)
+  seg.all_prod();
+  // 位置lから右へ、条件fを満たす最大の右端rを探す.O(logn)
+  // [l,r)のrが返ってくるので-1する
+  ll target = 10;
+  seg.max_right(3, [&](ll v) { return v > target; });
+  // 位置rから左へ、条件fを満たす最小の左端lを探す.O(logn)
+  // [l,r)の範囲なので引数は+1する
+  seg.min_left(4, [&](ll v) { return v > target; });
+}
