@@ -107,5 +107,43 @@ void stringstream_example() {
     }
   }
   string out = ss.str();
-  printf("Joined string: %s", out.c_str()); // 例: "Joined string: 1, 3, 4"
+  // 例: "Joined string: 1, 3, 4"
+  printf("Joined string: %s", out.c_str());
+}
+
+// transformのサンプル
+void transform_example() {
+  vl A = {1, 3, 4};
+  vl B(A.size());
+  // Aの各要素を2倍してBに格納
+  transform(all(A), B.begin(), [](ll x) { return x * 2; });
+  // 結果を出力: "2 6 8"
+  printarr(A);
+}
+
+// パイプライン（std::ranges）のサンプル
+#include <ranges>
+void pipeline_example() {
+  vl A = {1, 3, 4};
+
+  // ➀各要素を2倍し，3以上の要素だけを取り出す例
+  auto result = A | views::transform([](ll x) { return x * 2; }) |
+                views::filter([](ll x) { return x >= 3; });
+  vl resultv(all(result));
+  printarr(resultv); // 結果: "6 8"
+
+  // ➁先頭2要素のみ取り出す例 (take)
+  auto result2 = A | views::take(2);
+  vl resultv2(all(result2));
+  printarr(resultv2); // 結果: "1 3"
+
+  // ③逆順で取り出す例 (reverse)
+  auto result3 = A | views::reverse;
+  vl resultv3(all(result3));
+  printarr(resultv3); // 結果: "4 3 1"
+
+  // ④先頭1要素をスキップ(drop)
+  auto result4 = A | views::drop(1);
+  vl resultv4(all(result4));
+  printarr(resultv4); // 結果: "3 4"
 }
