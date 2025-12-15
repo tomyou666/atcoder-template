@@ -74,6 +74,7 @@ template <typename T> void printarr(vector<T> &v, bool isReverse = false){if (!i
 template <typename T> void addv(vector<T> &v, int loc, T val){if (loc >= v.size()) v.resize(loc + 1, 0);v[loc] += val;}
 template<class T> using _pq = priority_queue<T, vector<T>>;
 template<class T> using _pql = priority_queue<T, vector<T>, greater<T>>;
+template<class T, class Compare> using _pqc = priority_queue<T, vector<T>, Compare>;
 template<class T> bool chmin(T &a,T b){if(b<a){a=b;return 1;}else return 0;}
 template<class T> bool chmax(T &a,T b){if(a<b){a=b;return 1;}else return 0;}
 template<class T> void So(vector<T> &v) {sort(all(v));}

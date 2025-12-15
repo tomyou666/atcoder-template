@@ -74,6 +74,7 @@ template <typename T> void printarr(vector<T> &v, bool isReverse = false){if (!i
 template <typename T> void addv(vector<T> &v, int loc, T val){if (loc >= v.size()) v.resize(loc + 1, 0);v[loc] += val;}
 template<class T> using _pq = priority_queue<T, vector<T>>;
 template<class T> using _pql = priority_queue<T, vector<T>, greater<T>>;
+template<class T, class Compare> using _pqc = priority_queue<T, vector<T>, Compare>;
 template<class T> bool chmin(T &a,T b){if(b<a){a=b;return 1;}else return 0;}
 template<class T> bool chmax(T &a,T b){if(a<b){a=b;return 1;}else return 0;}
 template<class T> void So(vector<T> &v) {sort(all(v));}
@@ -154,7 +155,7 @@ void priority_queue_example() {
   auto cmp = [](ll a, ll b) {
     return abs(a) > abs(b); // 絶対値が小さい順
   };
-  priority_queue<ll, vector<ll>, decltype(cmp)> custom_pq(cmp);
+  _pqc<ll, decltype(cmp)> cpq;
 }
 
 mint division(mint a, mint b, ll m) { // 余り機能付きの除算
