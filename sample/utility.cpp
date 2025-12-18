@@ -100,64 +100,7 @@ void IN() {}
 template <class Head, class... Tail> void IN(Head &head, Tail &...tail) { scan(head); IN(tail...);}
 // clang-format on
 
-// スタック(LIFO)のサンプル
-void stack_example() {
-  vl A = {1, 3, 4};
-  stack<ll> st;
-  for (auto x : A) {
-    st.push(x); // スタックに積む
-  }
-  while (!st.empty()) {
-    print(st.top());
-    st.pop();
-  }
-}
-
-// キュー(FIFO)のサンプル
-void queue_example() {
-  vl A = {1, 3, 4};
-  queue<ll> q;
-  for (auto x : A) {
-    q.push(x); // キューに追加
-  }
-  while (!q.empty()) {
-    print(q.front());
-    q.pop();
-  }
-}
-
-// 連想配列(map)のサンプル
-void map_example() {
-  map<string, int> mp;
-  mp["apple"] = 3;
-
-  for (auto &p : mp) {
-    printf("%s %d", p.first.c_str(), p.second); // キーと値を出力
-  }
-  if (mp.count("banana")) {
-    print("exists. value is banana");
-  } else {
-    print("banana does not exist.");
-  }
-}
-
-// 優先度付きキュー
-void priority_queue_example() {
-  // ➀最大ヒープのサンプル
-  vl A = {1, 3, 4};
-  _pq<ll> pq;
-  for (auto x : A) {
-    pq.push(x); // 優先度付きキューに追加 O(log n)
-  }
-  while (!pq.empty()) {
-    print(pq.top()); // 一番大きい要素を出力 O(1)
-    pq.pop();        // O(log n)
-  }
-  // ➁最小ヒープの場合
-  _pql<ll> pql;
-  // ③カスタムヒープの場合
-  auto cmp = [](ll a, ll b) {
-    return abs(a) > abs(b); // 絶対値が小さい順
-  };
-  _pqc<ll, decltype(cmp)> cpq;
+// 余り機能付きの除算
+mint division(mint a, mint b, ll m) {
+  return a * b.pow(m - 2);
 }
