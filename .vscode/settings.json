@@ -144,5 +144,6 @@
     "editor.suggest.showTypeParameters": false,
     "editor.suggest.showUnits": false,
     "editor.suggest.showUsers": false,
-    "editor.suggest.showWords": false
+    "editor.suggest.showWords": false,
+    "clang.diagnostic.delay": 50
 }
