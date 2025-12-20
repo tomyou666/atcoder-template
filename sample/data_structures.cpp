@@ -30,7 +30,7 @@ typedef tuple<ll,ll,ll> tl;
 typedef vector<tl> vtl;
 typedef vector<vtl> vvtl;
 typedef vector<vvtl> vvvtl;
-const ll INF = 4000000000000000000ll;
+const ll INF = 1e12;
 const ld eps = 1e-10;
 static const long double pi = 3.141592653589793;
 #define il inline
