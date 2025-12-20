@@ -92,7 +92,8 @@ void scan(long long &a) {cin >> a;}
 void scan(char &a) {cin >> a;}
 void scan(double &a) {cin >> a;}
 void scan(string &a) {cin >> a;}
-template <class T, class S> void scan(pair<T, S> &p) {scan(p.first), scan(p.second);}
+template <class T, class S> void scan(pair<T,S> &p) {scan(p.first), scan(p.second);}
+template <class U, class T, class S> void scan(tuple<U,T,S> &p) {scan(get<0>(p));scan(get<1>(p));scan(get<2>(p));}
 template <class T> void scan(vector<T> &);
 template <class T> void scan(vector<T> &a) {for (auto &i : a) scan(i);}
 template <class T> void scan(T &a) {cin >> a;}
