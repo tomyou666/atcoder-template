@@ -150,4 +150,10 @@ void pipeline_example() {
   auto result4 = A | views::drop(1);
   vl resultv4(all(result4));
   printarr(resultv4); // 結果: "3 4"
+
+  // ⑤containsのサンプル
+  vl nums = {1, 2, 3, 4, 5};
+  if (ranges::contains(nums, 3)) {
+    print("found 3");
+  }
 }
