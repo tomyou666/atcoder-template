@@ -125,7 +125,7 @@ void transform_example() {
   // Aの各要素を2倍してBに格納
   transform(all(A), B.begin(), [](ll x) { return x * 2; });
   // 結果を出力: "2 6 8"
-  printarr(A);
+  printarr(B);
 }
 
 // パイプライン（std::ranges）のサンプル
@@ -159,4 +159,25 @@ void pipeline_example() {
   if (ranges::contains(nums, 3)) {
     print("found 3");
   }
+}
+
+// accumulateのサンプル
+void accumulate_example() {
+  vl A = {1, 3, 4};
+
+  // 全要素の合計を計算
+  ll sum = SUM(A);
+  print("sum:", sum); // 結果: "sum: 8"
+
+  // 初期値10, すべて足していく
+  ll sum10 = SUMi(A, 10LL);
+  print("sum+10:", sum10); // 結果: "sum+10: 18"
+
+  // それぞれの要素を掛け合わせる（積）例
+  ll prod = PROD(A);
+  print("prod:", prod); // 結果: "prod: 12"
+
+  // ラムダ関数で累積 xor を計算する例
+  ll acc_xor = accumulate(all(A), 0LL, [](ll a, ll b) { return a ^ b; });
+  print("xor:", acc_xor); // 結果: "xor: 6"
 }
