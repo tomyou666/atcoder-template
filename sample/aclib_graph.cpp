@@ -1,0 +1,144 @@
+#include <atcoder/all>
+#include <bits/stdc++.h>
+
+using namespace std;
+using namespace atcoder;
+
+// clang-format off
+typedef long long int ll;
+// using mint = modint998244353;
+// using mint = modint1000000007;
+constexpr ll mod = 998244353;
+typedef long double ld;
+typedef vector<int> vi;
+typedef vector<ll> vl;
+typedef vector<vl> vvl;
+typedef vector<vvl> vvvl;
+typedef vector<bool> vb;
+typedef vector<vb> vvb;
+typedef vector<vvb> vvvb;
+typedef vector<ld> vld;
+typedef vector<vld> vvld;
+typedef vector<vvld> vvvld;
+typedef vector<char> vc;
+typedef vector<string> vs;
+typedef pair<ll,ll> pl;
+typedef vector<pl> vpl;
+typedef vector<vpl> vvpl;
+typedef vector<vvpl> vvvpl;
+typedef tuple<ll,ll,ll> tl;
+typedef vector<tl> vtl;
+typedef vector<vtl> vvtl;
+typedef vector<vvtl> vvvtl;
+const ll INF = 1e12;
+const ld eps = 1e-10;
+static const long double pi = 3.141592653589793;
+#define il inline
+#define rep(i, n) for (int i = 0; i < (int)(n); i++)
+#define repn(i, num, n) for (int i = num; i < n; i++)
+#define per(i, n) for (int i = n - 1; i >= 0; i--)
+#define pern(i, num, n) for (int i = n - 1; i >= num; i--)
+#define all(v) v.begin(), v.end()
+#define rall(c) rbegin(c), rend(c)
+#define pb push_back
+#define eb emplace_back
+#define ppb pop_back
+#define ppf pop_front
+#define fi first
+#define se second
+#define LB(v, val) lower_bound(all(v), val)
+#define UB(v, val) upper_bound(all(v), val)
+#define BS(v, val) binary_search(all(v), val)
+#define MINE(v) min_element(all(v))
+#define MAXE(v) max_element(all(v))
+#define SO(v) So(v)
+#define SORE(v) Sore(v)
+#define REV(v) reverse(all(v))
+#define SUM(v) accumulate(all(v), 0LL)
+#define SUMi(v, init) accumulate(all(v), init)
+#define PROD(v) accumulate(all(v), 1LL, multiplies<ll>())
+#define INT(...) int __VA_ARGS__; IN(__VA_ARGS__)
+#define LL(...) ll __VA_ARGS__; IN(__VA_ARGS__)
+#define STR(...) string __VA_ARGS__; IN(__VA_ARGS__)
+#define CHR(...) char __VA_ARGS__; IN(__VA_ARGS__)
+#define DBL(...) double __VA_ARGS__; IN(__VA_ARGS__)
+#define VEC(type, name, size) vector<type> name(size); IN(name)
+#define VEC2(type, name1, name2, size) vector<type> name1(size), name2(size);  for (int i = 0; i < size; i++) IN(name1[i], name2[i])
+#define VEC3(type, name1, name2, name3, size) vector<type> name1(size), name2(size), name3(size);  for (int i = 0; i < size; i++) IN(name1[i], name2[i], name3[i])
+#define VV(type, name, h, w) vector<vector<type>> name(h, vector<type>(w)); IN(name)
+void yes(bool a){cout<<(a?"yes":"no")<<endl;}
+void YES(bool a){cout<<(a?"YES":"NO")<<endl;}
+void Yes(bool a){cout<<(a?"Yes":"No")<<endl;}
+void possible(bool a){ cout<<(a?"possible":"impossible")<<endl; }
+void Possible(bool a){ cout<<(a?"Possible":"Impossible")<<endl; }
+void POSSIBLE(bool a){ cout<<(a?"POSSIBLE":"IMPOSSIBLE")<<endl; }
+void fast_io() {ios::sync_with_stdio(false);cin.tie(NULL);}
+template <typename T> void cinarr(vector<T> &v){rep(i, v.size()) cin >> v[i];}
+template <typename T> void print(const T &x){cout << x << '\n';}
+template <typename T, typename... Tail> void print(T &&head, Tail&&... tail) {cout << head << ' '; (cout << ... << tail) << '\n';}
+template <typename T> void print_ld(const T &x, int precision = 3){cout << fixed << setprecision(precision) << x << '\n';}
+template <typename T> void printarr(vector<T> &v, bool isReverse = false){if (!isReverse) {rep(i, v.size()) {if (i > 0) cout << " ";cout << v[i];}} else {per(i, v.size()) {if (i < v.size() - 1) cout << " ";cout << v[i];}}cout << endl;}
+template <typename T> void addv(vector<T> &v, int loc, T val){if (loc >= v.size()) v.resize(loc + 1, 0);v[loc] += val;}
+template<class T> using _pq = priority_queue<T, vector<T>>;
+template<class T> using _pql = priority_queue<T, vector<T>, greater<T>>;
+template<class T, class Compare> using _pqc = priority_queue<T, vector<T>, Compare>;
+template<class T> bool chmin(T &a,T b){if(b<a){a=b;return 1;}else return 0;}
+template<class T> bool chmax(T &a,T b){if(a<b){a=b;return 1;}else return 0;}
+template<class T> void So(vector<T> &v) {sort(all(v));}
+void So(string &v) {sort(all(v));}
+template<class T> void Sore(vector<T> &v) {sort(all(v), greater<T>());}
+void Sore(string &v) {sort(all(v),[](auto &a,auto &b){return a>b;});}
+int binary_count(long long a){int res=0;while(a){res+=(a&1),a>>=1;}return res;}
+int scan() {return getchar();}
+void scan(int &a) {cin >> a;}
+void scan(long long &a) {cin >> a;}
+void scan(char &a) {cin >> a;}
+void scan(double &a) {cin >> a;}
+void scan(string &a) {cin >> a;}
+template <class T, class S> void scan(pair<T, S> &p) {scan(p.first), scan(p.second);}
+template <class T> void scan(vector<T> &);
+template <class T> void scan(vector<T> &a) {for (auto &i : a) scan(i);}
+template <class T> void scan(T &a) {cin >> a;}
+void IN() {}
+template <class Head, class... Tail> void IN(Head &head, Tail &...tail) { scan(head); IN(tail...);}
+// clang-format on
+
+// https://atcoder.github.io/ac-library/production/document_ja/dsu.html
+void dsu_sample() { // DSU（Disjoint Set Union / Union-Find）の使い方
+  dsu d(10);        // n頂点0辺の無向グラフを作成.O(n)
+  // 辺(a,b)を追加.連結だった場合はその代表元、非連結だった場合は新たな代表元を返す.ならしO(α(n))
+  d.merge(0, 1);
+  // 頂点a,bが連結かどうかを返す.ならしO(α(n))
+  d.same(0, 1);
+  // 頂点aの属する連結成分の代表元を返す.ならしO(α(n))
+  d.leader(0);
+  // 頂点aの属する連結成分のサイズを返す.ならしO(α(n))
+  d.size(0);
+  // グラフを連結成分に分け、その情報を返す.O(n)
+  // 返り値は「「一つの連結成分の頂点番号のリスト」のリスト」
+  d.groups();
+}
+
+// https://atcoder.github.io/ac-library/production/document_ja/maxflow.html
+void maxflow_sample() { // 最大フロー問題の使い方
+  mf_graph<int> g(10);  // n頂点0辺のグラフを作成.Capは容量の型(int or ll).O(n)
+  // fromからtoへ最大容量cap、流量0の辺を追加し、何番目に追加された辺かを返す.ならしO(1)
+  int e0 = g.add_edge(0, 1, 5);
+  // 頂点sからtへ流せる限り流し、流せた量を返す.
+  // O(min(n^(2/3)m, m^(3/2))) (辺の容量がすべて1の時)
+  // or O(n^2m)
+  // m:追加された辺数
+  int flow1 = g.flow(0, 3);
+  // 頂点sからtへ流量flow_limitに達するまで流せる限り流し、流せた量を返す
+  int flow2 = g.flow(0, 3, 2);
+  // 長さnのvectorを返す.i番目の要素には、頂点sからiへ残余グラフで到達可能なときtrueを返す.O(n+m)
+  vector<bool> cut = g.min_cut(0);
+  // 今の内部の辺の状態を返す.辺の順番はadd_edgeで追加された順番と同一.O(1)
+  mf_graph<int>::edge edge = g.get_edge(0);
+  // 辺の容量をどれだけ使っているか
+  int used = edge.cap - edge.flow;
+  // すべての辺の状態を返す.O(m)
+  vector<mf_graph<int>::edge> edges = g.edges();
+  // i番目に追加された辺の容量、流量をnew_cap, new_flowに変更する.O(1)
+  g.change_edge(0, 10, 5);
+}

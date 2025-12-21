@@ -134,3 +134,152 @@ struct RollingHash {
     return h;
   }
 };
+
+/**
+ * @brief 幅優先探索により単一始点最短距離を計算する
+ *
+ * @param g g[i] は頂点 i から到達可能な頂点のリスト（隣接リスト形式）。
+ * @param visited 各頂点が訪問済みかどうか管理する配列。
+ * @param dist 各頂点への始点からの最短距離を格納する配列。未訪問ならば -1。
+ * @param que 探索用キュー。最初に始点のインデックスを格納しておく。
+ * @note 時間計算量: O(V + E) ここで V は頂点数、E は辺数
+ * @note 空間計算量: O(V)
+ */
+void bfs(vvl &g, vb &visited, vl &dist, queue<ll> &q) {
+  visited[q.front()] = true;
+  while (!q.empty()) {
+    ll pos = q.front();
+    q.pop();
+    for (auto edge : g[pos]) {
+      if (visited[edge]) continue;
+      visited[edge] = true;
+      q.push(edge);
+      dist[edge] = dist[pos] + 1;
+    }
+  }
+}
+
+/**
+ * @brief
+ * 深さ優先探索によりgoalまでのパスが存在するか探索し、その経路をrouteに記録する
+ *
+ * @param graph 隣接リスト形式のグラフ
+ * @param visited 各頂点が訪問済みかどうか管理する配列
+ * @param path 現在の探索経路を格納するスタック
+ * @param cur 現在地の頂点番号（0-indexed）
+ * @param goal 目的地の頂点番号（0-indexed）
+ * @return ゴールに到達できればtrue, できなければfalse
+ * @note 時間計算量: O(V + E). V:頂点数、E:辺数
+ * @note 空間計算量: O(V) （再帰スタックを含む）
+ */
+bool dfs(vvl &graph, vb &visited, stack<ll> &path, ll cur, ll goal) {
+  visited[cur] = true;
+  for (auto edge : graph[cur]) {
+    if (visited[edge]) continue;
+    path.push(edge);
+    if (edge == goal) return true;
+    bool found = dfs(graph, visited, path, edge, goal);
+    if (found) return true;
+    path.pop();
+  }
+  return false;
+}
+
+auto cmp = [](pl a, pl b) { return a.fi > b.fi; };
+/**
+ * @brief
+ * ダイクストラ法により無向グラフの単一始点最短距離を計算する
+ * 辺の長さは必ず正の数であること
+ *
+ * @param graph 重み付き隣接リスト形式のグラフ graph[i] = {{cost, to}, ...}
+ * @param dist 各頂点への始点からの最短距離を格納する配列（参照渡し）
+ * @param visited 各頂点が訪問済みかどうか管理する配列
+ * @param pq ダイクストラ探索用優先度付きキュー（距離, 頂点番号）(min-heap)
+ * @note 時間計算量: O(ElogV). V:頂点数、E:辺数
+ * @note 空間計算量: O(V+E)
+ */
+void dijkstra(const vvpl &graph, vl &dist, vb &visited,
+              _pqc<pl, decltype(cmp)> &pq) {
+  if (pq.empty()) return;
+  pl top = pq.top();
+  pq.pop();
+  ll cur_dist = top.fi;
+  ll cur_v = top.se;
+  if (!visited[cur_v]) {
+    visited[cur_v] = true;
+    for (auto edge : graph[cur_v]) {
+      ll to = edge.se;
+      ll cost = edge.fi;
+      if (visited[to]) continue;
+      ll ndist = cur_dist + cost;
+      if (chmin(dist[to], ndist)) {
+        pq.push({ndist, edge.se});
+      }
+    }
+  }
+  dijkstra(graph, dist, visited, pq);
+}
+
+/**
+ * @brief
+ * ベルマンフォード法により有向グラフの単一始点最短距離を計算する
+ * 負閉路の検出にも対応（負閉路が存在する場合はtrueを返す）
+ *
+ * @param N 頂点数
+ * @param edges 辺リスト: edges = {{from, to, cost}, ...}
+ * @param dist 各頂点への最短距離（参照渡し・始点以外はINF推奨）
+ * @param start 始点の頂点番号
+ * @return 負閉路があればtrue, なければfalse
+ * @note 時間計算量: O(VE). V:頂点数、E:辺数
+ * @note 空間計算量: O(V)
+ */
+bool bellman_ford(ll N, const vtl &edges, vl &dist, ll start) {
+  dist[start] = 0;
+  bool has_negative_cycle = false;
+  rep(i, N) {
+    bool updated = false;
+    for (auto &e : edges) {
+      ll from = get<0>(e), to = get<1>(e), cost = get<2>(e);
+      if (dist[from] == INF) continue;
+      if (chmin(dist[to], dist[from] + cost)) {
+        updated = true;
+        // N回目にも更新があったら負閉路検出
+        if (i == N - 1) has_negative_cycle = true;
+      }
+    }
+    if (!updated) break;
+  }
+  return has_negative_cycle;
+}
+
+/**
+ * @brief
+ * ワーシャルフロイド法（全点対最短経路）
+ * 負閉路の検出にも対応（負閉路が存在する場合はtrueを返す）
+ *
+ * @param N 頂点数
+ * @param dist 隣接行列形式の距離行列(dist[i][j] =
+ * iからjへの初期コスト。
+ * {i,j}が隣接していればcost
+ * i==jの場合は0
+ * 道が無ければINF で初期化
+ * @return 負閉路があればtrue, なければfalse
+ * @note 時間計算量: O(V^3). V:頂点数
+ * @note 空間計算量: O(V^2)
+ */
+bool warshall_floyd(ll N, vvl &dist) {
+  rep(k, N) {
+    rep(i, N) {
+      if (dist[i][k] == INF) continue;
+      rep(j, N) {
+        if (dist[k][j] == INF) continue;
+        chmin(dist[i][j], dist[i][k] + dist[k][j]);
+      }
+    }
+  }
+  // 負閉路の検出: dist[i][i] < 0 となるiが存在すれば負閉路あり
+  rep(i, N) {
+    if (dist[i][i] < 0) return true;
+  }
+  return false;
+}
