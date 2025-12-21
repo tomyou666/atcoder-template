@@ -51,9 +51,12 @@ static const long double pi = 3.141592653589793;
 #define BS(v, val) binary_search(all(v), val)
 #define MINE(v) min_element(all(v))
 #define MAXE(v) max_element(all(v))
-#define SORT(v) So(v)
+#define SO(v) So(v)
 #define SORE(v) Sore(v)
 #define REV(v) reverse(all(v))
+#define SUM(v) accumulate(all(v), 0LL)
+#define SUMi(v, init) accumulate(all(v), init)
+#define PROD(v) accumulate(all(v), 1LL, multiplies<ll>())
 #define INT(...) int __VA_ARGS__; IN(__VA_ARGS__)
 #define LL(...) ll __VA_ARGS__; IN(__VA_ARGS__)
 #define STR(...) string __VA_ARGS__; IN(__VA_ARGS__)
@@ -69,11 +72,11 @@ void Yes(bool a){cout<<(a?"Yes":"No")<<endl;}
 void possible(bool a){ cout<<(a?"possible":"impossible")<<endl; }
 void Possible(bool a){ cout<<(a?"Possible":"Impossible")<<endl; }
 void POSSIBLE(bool a){ cout<<(a?"POSSIBLE":"IMPOSSIBLE")<<endl; }
-void fast_io() {std::ios::sync_with_stdio(false);std::cin.tie(NULL);}
+void fast_io() {ios::sync_with_stdio(false);cin.tie(NULL);}
 template <typename T> void cinarr(vector<T> &v){rep(i, v.size()) cin >> v[i];}
-template <typename T> void print(const T &x){std::cout << x << '\n';}
-template <typename T, typename... Args> void print(const T &x, const Args &...rest){std::cout << x << ' ';print(rest...);}
-template <typename T> void print_ld(const T &x, int precision = 3){std::cout << std::fixed << std::setprecision(precision) << x << '\n';}
+template <typename T> void print(const T &x){cout << x << '\n';}
+template <typename T, typename... Tail> void print(T &&head, Tail&&... tail) {cout << head << ' '; (cout << ... << tail) << '\n';}
+template <typename T> void print_ld(const T &x, int precision = 3){cout << fixed << setprecision(precision) << x << '\n';}
 template <typename T> void printarr(vector<T> &v, bool isReverse = false){if (!isReverse) {rep(i, v.size()) {if (i > 0) cout << " ";cout << v[i];}} else {per(i, v.size()) {if (i < v.size() - 1) cout << " ";cout << v[i];}}cout << endl;}
 template <typename T> void addv(vector<T> &v, int loc, T val){if (loc >= v.size()) v.resize(loc + 1, 0);v[loc] += val;}
 template<class T> using _pq = priority_queue<T, vector<T>>;
@@ -92,8 +95,7 @@ void scan(long long &a) {cin >> a;}
 void scan(char &a) {cin >> a;}
 void scan(double &a) {cin >> a;}
 void scan(string &a) {cin >> a;}
-template <class T, class S> void scan(pair<T,S> &p) {scan(p.first), scan(p.second);}
-template <class U, class T, class S> void scan(tuple<U,T,S> &p) {scan(get<0>(p));scan(get<1>(p));scan(get<2>(p));}
+template <class T, class S> void scan(pair<T, S> &p) {scan(p.first), scan(p.second);}
 template <class T> void scan(vector<T> &);
 template <class T> void scan(vector<T> &a) {for (auto &i : a) scan(i);}
 template <class T> void scan(T &a) {cin >> a;}
