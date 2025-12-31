@@ -192,7 +192,8 @@ auto cmp = [](pl a, pl b) { return a.fi > b.fi; };
  * 辺の長さは必ず正の数であること
  *
  * @param graph 重み付き隣接リスト形式のグラフ graph[i] = {{cost, to}, ...}
- * @param dist 各頂点への始点からの最短距離を格納する配列（参照渡し）
+ * @param dist 各頂点への始点からの最短距離を格納する配列.
+ * 初期化例) pq.push({0, start});
  * @param visited 各頂点が訪問済みかどうか管理する配列
  * @param pq ダイクストラ探索用優先度付きキュー（距離, 頂点番号）(min-heap)
  * @note 時間計算量: O(ElogV). V:頂点数、E:辺数
