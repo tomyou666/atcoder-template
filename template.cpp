@@ -75,8 +75,7 @@ void POSSIBLE(bool a){ cout<<(a?"POSSIBLE":"IMPOSSIBLE")<<endl; }
 void fast_io() {ios::sync_with_stdio(false);cin.tie(NULL);}
 template <typename T> void cinarr(vector<T> &v){rep(i, v.size()) cin >> v[i];}
 template <typename T> void print(const T &x){cout << x << '\n';}
-template <typename T, typename... Tail>
-void print(T &&head, Tail&&... tail) {cout << head << ' '; (cout << ... << tail) << '\n';}
+template <typename T, typename... Args> void print(const T &x, const Args &...rest){cout << x; ((cout << ' ' << rest), ...); cout << '\n';}
 template <typename T> void print_ld(const T &x, int precision = 3){cout << fixed << setprecision(precision) << x << '\n';}
 template <typename T> void printarr(vector<T> &v, bool isReverse = false){if (!isReverse) {rep(i, v.size()) {if (i > 0) cout << " ";cout << v[i];}} else {per(i, v.size()) {if (i < v.size() - 1) cout << " ";cout << v[i];}}cout << endl;}
 template <typename T> void addv(vector<T> &v, int loc, T val){if (loc >= v.size()) v.resize(loc + 1, 0);v[loc] += val;}
