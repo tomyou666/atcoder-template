@@ -136,6 +136,27 @@ struct RollingHash {
 };
 
 /**
+ * @brief 二分探索によりソート済み配列から val
+ * 以上の最小要素のインデックスを探す (lower_bound相当)
+ *
+ * @param v ソート済みの配列
+ * @param val 比較対象の値
+ * @return val 以上の最小要素のインデックス。存在しない場合は v.size()
+ * @note 時間計算量: O(log n) ここで n は配列のサイズ
+ * @note 空間計算量: O(1)
+ */
+ll binary_search_lb_sample(const vl &v, ll val) {
+  ll l = 0, r = v.size();
+  auto cmp = [](ll t, ll val) { return t < val; };
+  while (l < r) {
+    ll m = (l + r) / 2;
+    if (cmp(v[m], val)) l = m + 1;
+    else r = m;
+  }
+  return l;
+}
+
+/**
  * @brief 幅優先探索により単一始点最短距離を計算する
  *
  * @param g g[i] は頂点 i から到達可能な頂点のリスト（隣接リスト形式）。
